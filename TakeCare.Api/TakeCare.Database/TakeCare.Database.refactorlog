@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="5c79b06b-63ca-4b1e-b6f3-fc8bce451952" ChangeDateTime="06/17/2016 13:53:13">
+    <Property Name="ElementName" Value="[dbo].[Person].[Name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Person]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FirstName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2cbb2dc7-a215-403b-aace-38efe6b260bc" ChangeDateTime="06/17/2016 13:58:24">
+    <Property Name="ElementName" Value="[dbo].[DeviceDescription].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DeviceDescription]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdMacAddress" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6cae0c9a-a576-4a71-87cb-135a851ce0c5" ChangeDateTime="06/17/2016 13:58:31">
+    <Property Name="ElementName" Value="[dbo].[DeviceDescription].[Ma]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DeviceDescription]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MacAdress" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="aefde01f-a243-4184-8718-f364e6023402" ChangeDateTime="06/17/2016 13:58:44">
+    <Property Name="ElementName" Value="[dbo].[DeviceDescription].[MacAdress]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DeviceDescription]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MacAddress" />
+  </Operation>
+</Operations>
