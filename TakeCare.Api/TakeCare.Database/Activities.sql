@@ -1,12 +1,11 @@
 ﻿CREATE TABLE [dbo].[Activities]
 (
 	[Id] INT NOT NULL PRIMARY KEY, 
-    [IdMacAddress] INT NOT NULL, 
-    [Steps] NCHAR(10) NULL, 
-    [GettingDateFrom] DATETIME NULL, 
-    [GettingDateUntil] DATETIME NULL, 
-    [Intensity] NCHAR(10) NULL, 
+    [Id_Device] INT NOT NULL, 
+    [Steps] INT NULL, 
+    [TimeStamp] DATETIME NULL, 
+    [Intensity] INT NULL, 
     [Category] NCHAR(10) NULL, 
     [HeartRate] NCHAR(10) NULL, 
-    CONSTRAINT [FK_Activities_ToDevice] FOREIGN KEY ([IdMacAddress]) REFERENCES [Device]([IdMacAddress])
+    CONSTRAINT [FK_Activities_To_Device] FOREIGN KEY ([Id_Device]) REFERENCES [Devices]([Id])
 )
