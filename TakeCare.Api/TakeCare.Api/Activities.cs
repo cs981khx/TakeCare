@@ -12,15 +12,15 @@ namespace TakeCare.Api
     using System;
     using System.Collections.Generic;
     
-    public partial class Activity
+    public partial class Activities
     {
         public int Id { get; set; }
-        public Nullable<int> IdMacAddress { get; set; }
-        public string Steps { get; set; }
-        public Nullable<System.DateTime> GettingDateFrom { get; set; }
-        public Nullable<System.DateTime> GettingDateTo { get; set; }
-        public string Intensity { get; set; }
-        public string Category { get; set; }
-        public string HeartRate { get; set; }
+        public Nullable<int> Steps { get; set; }
+        public Nullable<System.DateTime> TimeStamp { get; set; }
+        public Nullable<int> Intensity { get; set; }
+        public Nullable<int> Category { get; set; }
+        public Nullable<int> HeartRate { get; set; }
+    
+        public virtual Devices Devices { get; set; }
     }
 }

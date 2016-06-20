@@ -12,9 +12,12 @@ namespace TakeCare.Api
     using System;
     using System.Collections.Generic;
     
-    public partial class Device
+    public partial class Carers
     {
-        public string Id { get; set; }
-        public string MacAddress { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+    
+        public virtual Person1 Person { get; set; }
     }
 }

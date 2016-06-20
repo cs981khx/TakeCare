@@ -25,9 +25,9 @@ namespace TakeCare.Api
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Activity> Activities { get; set; }
-        public virtual DbSet<Care> Cares { get; set; }
-        public virtual DbSet<Person> Persons { get; set; }
-        public virtual DbSet<Device> Device { get; set; }
+        public virtual DbSet<Activities> Activities1 { get; set; }
+        public virtual DbSet<Carers> Carers { get; set; }
+        public virtual DbSet<Devices> Devices { get; set; }
+        public virtual DbSet<Person1> Person1Set { get; set; }
     }
 }

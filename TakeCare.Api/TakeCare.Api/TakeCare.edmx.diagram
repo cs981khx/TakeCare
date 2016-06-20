@@ -5,10 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="207299f070c34247840aa2cbe57bdea3" Name="Diagram1" ZoomLevel="55">
-        <EntityTypeShape EntityType="TakeCareModel.Activity" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TakeCareModel.Care" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TakeCareModel.Person" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TakeCareModel.Device" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TakeCareModel.Activities" Width="1.5" PointX="7.625" PointY="4.125" />
+        <EntityTypeShape EntityType="TakeCareModel.Carers" Width="1.5" PointX="9.875" PointY="7.25" />
+        <EntityTypeShape EntityType="TakeCareModel.Devices" Width="1.5" PointX="5.375" PointY="5.625" />
+        <EntityTypeShape EntityType="TakeCareModel.Person1" Width="1.5" PointX="7.625" PointY="7.25" />
+        <AssociationConnector Association="TakeCareModel.FK_Activities_To_Device" />
+        <AssociationConnector Association="TakeCareModel.FK_Carers_To_Person" />
+        <AssociationConnector Association="TakeCareModel.FK_Person_To_Device" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
