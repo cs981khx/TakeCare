@@ -7,6 +7,6 @@
     [GettingDateUntil] DATETIME NULL, 
     [Intensity] NCHAR(10) NULL, 
     [Category] NCHAR(10) NULL, 
-    [HeartRate] NCHAR(10) NULL, 
-    CONSTRAINT [FK_Activities_ToDevice] FOREIGN KEY ([IdMacAddress]) REFERENCES [Device]([IdMacAddress])
+    [HeartRate] NCHAR(10) NULL
+    
 )

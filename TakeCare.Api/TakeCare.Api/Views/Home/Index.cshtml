@@ -22,3 +22,27 @@
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
     </div>
 </div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:63982/api/values/post',
+            data: {jsonMacAddress: "", jsonDataFromDevice: ""},
+            dataType: "json",
+
+            crossDomain: true,
+            success: function (msg) {
+
+                alert("success");
+
+            },
+            error: function (request, status, error) {
+
+                alert(error);
+            }
+        });
+    });
+
+</script>

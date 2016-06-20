@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using TakeCare.Api.DAL;
 
 namespace TakeCare.Api.Controllers
 {
@@ -22,8 +24,27 @@ namespace TakeCare.Api.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string jsonEventsData)
+        public void Post([FromBody]string jsonMacAddress, [FromBody]string jsonDataFromDevice)
         {
+            // deserialise the JSON  into object
+            // insert them 
+            Device deserializedDevice = JsonConvert.DeserializeObject<Device>(jsonMacAddress);
+            List<Activity> deserializedActivity = JsonConvert.DeserializeObject<List<Activity>>(jsonDataFromDevice);
+
+            using (var db = new TakeCareContext())
+            {
+                var macadress = db.Devices
+                    .Where(b => b.MacAddress == deserializedDevice.MacAddress)
+                    .FirstOrDefault();
+
+                var activities = db.Set<Activity>();
+                foreach(Activity activity in deserializedActivity)
+                {
+                    activities.Add(activity);
+                }                
+
+                db.SaveChanges();
+            }
 
         }
 
