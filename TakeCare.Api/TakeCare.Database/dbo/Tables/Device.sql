@@ -1,6 +1,6 @@
-﻿CREATE TABLE [dbo].[Device] (
-    [Id]         NCHAR (10) NOT NULL,
-    [MacAddress] NCHAR (10) NULL,
-    CONSTRAINT [PK_Device] PRIMARY KEY CLUSTERED ([Id] ASC)
+﻿CREATE TABLE [dbo].[Devices]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [MacAddress] NVARCHAR(50) NULL, 
+    [Description] NVARCHAR(100) NULL
 );
-

@@ -1,8 +1,9 @@
-﻿CREATE TABLE [dbo].[Persons] (
-    [Id]           INT        NOT NULL,
-    [FirstName]    NCHAR (10) NULL,
-    [LastName]     NCHAR (10) NULL,
-    [IdMacAddress] INT        NOT NULL,
-    CONSTRAINT [PK_Persons] PRIMARY KEY CLUSTERED ([Id] ASC)
+﻿CREATE TABLE [dbo].[Person]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id_Device] INT NOT NULL, 
+    [FirstName] VARCHAR(100) NULL, 
+    [LastName] VARCHAR(100) NULL, 
+    CONSTRAINT [FK_Person_To_Device] FOREIGN KEY ([Id_Device]) REFERENCES [Devices]([Id]),
 );
 
