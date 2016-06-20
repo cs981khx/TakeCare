@@ -14,7 +14,7 @@
     </RootPath>
     <RootNamespace>TakeCare.Database</RootNamespace>
     <AssemblyName>TakeCare.Database</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -23,6 +23,8 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -58,17 +60,16 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
-  </ItemGroup>
-  <ItemGroup>
-    <Build Include="Person.sql" />
-    <Build Include="Carers.sql" />
-    <Build Include="Devices.sql" />
-    <Build Include="Activities.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="TakeCare.Database.refactorlog" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CreateDbInstance.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Activity.sql" />
+    <Build Include="dbo\Tables\Cares.sql" />
+    <Build Include="dbo\Tables\Persons.sql" />
+    <Build Include="dbo\Tables\Device.sql" />
   </ItemGroup>
 </Project>
