@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Microsoft.Ajax.Utilities;
 using TakeCare.Api.DAL;
 
 namespace TakeCare.Api.Controllers
@@ -34,7 +35,7 @@ namespace TakeCare.Api.Controllers
             using (var db = new TakeCareContext())
             {
                 var macadress = db.Devices
-                    .Where(b => b.MacAddress == deserializedDevice.MacAddress)
+                    .Where(d => d.MacAddress.ToLower() == deserializedDevice.MacAddress.ToLower())
                     .FirstOrDefault();
 
                 var activities = db.Set<Activity>();

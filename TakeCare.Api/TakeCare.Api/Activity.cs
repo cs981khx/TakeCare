@@ -12,7 +12,7 @@ namespace TakeCare.Api
     using System;
     using System.Collections.Generic;
     
-    public partial class Activities
+    public partial class Activity
     {
         public int Id { get; set; }
         public Nullable<int> Steps { get; set; }
@@ -21,6 +21,6 @@ namespace TakeCare.Api
         public Nullable<int> Category { get; set; }
         public Nullable<int> HeartRate { get; set; }
     
-        public virtual Devices Devices { get; set; }
+        public virtual Device Device { get; set; }
     }
 }

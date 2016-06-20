@@ -14,7 +14,7 @@ namespace TakeCare.Api.DAL
         }
 
         public DbSet<Activity> Activities { get; set; }
-        public DbSet<Care> Carers { get; set; }
+        public DbSet<Carer> Carers { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Device>  Devices{ get; set; }
 

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TakeCareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TakeCareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activities">
           <Key>
             <PropertyRef Name="Id" />
@@ -102,24 +102,24 @@
     <edmx:ConceptualModels>
       <Schema Namespace="TakeCareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TakeCareEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Activities1" EntityType="TakeCareModel.Activities" />
-          <EntitySet Name="Carers" EntityType="TakeCareModel.Carers" />
-          <EntitySet Name="Devices" EntityType="TakeCareModel.Devices" />
-          <EntitySet Name="Person1Set" EntityType="TakeCareModel.Person1" />
+          <EntitySet Name="Activities" EntityType="TakeCareModel.Activity" />
+          <EntitySet Name="Carers" EntityType="TakeCareModel.Carer" />
+          <EntitySet Name="Devices" EntityType="TakeCareModel.Device" />
+          <EntitySet Name="People" EntityType="TakeCareModel.Person" />
           <AssociationSet Name="FK_Activities_To_Device" Association="TakeCareModel.FK_Activities_To_Device">
-            <End Role="Devices" EntitySet="Devices" />
-            <End Role="Activities" EntitySet="Activities1" />
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="Activity" EntitySet="Activities" />
           </AssociationSet>
           <AssociationSet Name="FK_Carers_To_Person" Association="TakeCareModel.FK_Carers_To_Person">
-            <End Role="Person1" EntitySet="Person1Set" />
-            <End Role="Carers" EntitySet="Carers" />
+            <End Role="Person" EntitySet="People" />
+            <End Role="Carer" EntitySet="Carers" />
           </AssociationSet>
           <AssociationSet Name="FK_Person_To_Device" Association="TakeCareModel.FK_Person_To_Device">
-            <End Role="Devices" EntitySet="Devices" />
-            <End Role="Person1" EntitySet="Person1Set" />
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="Person" EntitySet="People" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Activities">
+        <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -129,57 +129,57 @@
           <Property Name="Intensity" Type="Int32" />
           <Property Name="Category" Type="Int32" />
           <Property Name="HeartRate" Type="Int32" />
-          <NavigationProperty Name="Devices" Relationship="TakeCareModel.FK_Activities_To_Device" FromRole="Activities" ToRole="Devices" />
+          <NavigationProperty Name="Device" Relationship="TakeCareModel.FK_Activities_To_Device" FromRole="Activity" ToRole="Device" />
         </EntityType>
-        <EntityType Name="Carers">
+        <EntityType Name="Carer">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Person" Relationship="TakeCareModel.FK_Carers_To_Person" FromRole="Carers" ToRole="Person1" />
+          <NavigationProperty Name="Person" Relationship="TakeCareModel.FK_Carers_To_Person" FromRole="Carer" ToRole="Person" />
         </EntityType>
-        <EntityType Name="Devices">
+        <EntityType Name="Device">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="MacAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Activities" Relationship="TakeCareModel.FK_Activities_To_Device" FromRole="Devices" ToRole="Activities" />
-          <NavigationProperty Name="Person" Relationship="TakeCareModel.FK_Person_To_Device" FromRole="Devices" ToRole="Person1" />
+          <NavigationProperty Name="Activities" Relationship="TakeCareModel.FK_Activities_To_Device" FromRole="Device" ToRole="Activity" />
+          <NavigationProperty Name="People" Relationship="TakeCareModel.FK_Person_To_Device" FromRole="Device" ToRole="Person" />
         </EntityType>
-        <EntityType Name="Person1">
+        <EntityType Name="Person">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Carers" Relationship="TakeCareModel.FK_Carers_To_Person" FromRole="Person1" ToRole="Carers" />
-          <NavigationProperty Name="Devices" Relationship="TakeCareModel.FK_Person_To_Device" FromRole="Person1" ToRole="Devices" />
+          <NavigationProperty Name="Carers" Relationship="TakeCareModel.FK_Carers_To_Person" FromRole="Person" ToRole="Carer" />
+          <NavigationProperty Name="Device" Relationship="TakeCareModel.FK_Person_To_Device" FromRole="Person" ToRole="Device" />
         </EntityType>
         <Association Name="FK_Activities_To_Device">
-          <End Type="TakeCareModel.Devices" Role="Devices" Multiplicity="1" />
-          <End Type="TakeCareModel.Activities" Role="Activities" Multiplicity="*" />
+          <End Type="TakeCareModel.Device" Role="Device" Multiplicity="1" />
+          <End Type="TakeCareModel.Activity" Role="Activity" Multiplicity="*" />
         </Association>
         <Association Name="FK_Carers_To_Person">
-          <End Type="TakeCareModel.Person1" Role="Person1" Multiplicity="1" />
-          <End Type="TakeCareModel.Carers" Role="Carers" Multiplicity="*" />
+          <End Type="TakeCareModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="TakeCareModel.Carer" Role="Carer" Multiplicity="*" />
         </Association>
         <Association Name="FK_Person_To_Device">
-          <End Type="TakeCareModel.Devices" Role="Devices" Multiplicity="1" />
-          <End Type="TakeCareModel.Person1" Role="Person1" Multiplicity="*" />
+          <End Type="TakeCareModel.Device" Role="Device" Multiplicity="1" />
+          <End Type="TakeCareModel.Person" Role="Person" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="TakeCareModelStoreContainer" CdmEntityContainer="TakeCareEntities">
-          <EntitySetMapping Name="Activities1">
-            <EntityTypeMapping TypeName="TakeCareModel.Activities">
+          <EntitySetMapping Name="Activities">
+            <EntityTypeMapping TypeName="TakeCareModel.Activity">
               <MappingFragment StoreEntitySet="Activities">
                 <ScalarProperty Name="HeartRate" ColumnName="HeartRate" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
@@ -191,7 +191,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Carers">
-            <EntityTypeMapping TypeName="TakeCareModel.Carers">
+            <EntityTypeMapping TypeName="TakeCareModel.Carer">
               <MappingFragment StoreEntitySet="Carers">
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -200,7 +200,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Devices">
-            <EntityTypeMapping TypeName="TakeCareModel.Devices">
+            <EntityTypeMapping TypeName="TakeCareModel.Device">
               <MappingFragment StoreEntitySet="Devices">
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
@@ -208,8 +208,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Person1Set">
-            <EntityTypeMapping TypeName="TakeCareModel.Person1">
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="TakeCareModel.Person">
               <MappingFragment StoreEntitySet="Person">
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -218,26 +218,26 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="FK_Activities_To_Device" TypeName="TakeCareModel.FK_Activities_To_Device" StoreEntitySet="Activities">
-            <EndProperty Name="Activities">
+            <EndProperty Name="Activity">
               <ScalarProperty Name="Id" ColumnName="Id" />
             </EndProperty>
-            <EndProperty Name="Devices">
+            <EndProperty Name="Device">
               <ScalarProperty Name="Id" ColumnName="Id_Device" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_Carers_To_Person" TypeName="TakeCareModel.FK_Carers_To_Person" StoreEntitySet="Carers">
-            <EndProperty Name="Carers">
+            <EndProperty Name="Carer">
               <ScalarProperty Name="Id" ColumnName="Id" />
             </EndProperty>
-            <EndProperty Name="Person1">
+            <EndProperty Name="Person">
               <ScalarProperty Name="Id" ColumnName="Id_Person" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_Person_To_Device" TypeName="TakeCareModel.FK_Person_To_Device" StoreEntitySet="Person">
-            <EndProperty Name="Person1">
+            <EndProperty Name="Person">
               <ScalarProperty Name="Id" ColumnName="Id" />
             </EndProperty>
-            <EndProperty Name="Devices">
+            <EndProperty Name="Device">
               <ScalarProperty Name="Id" ColumnName="Id_Device" />
             </EndProperty>
           </AssociationSetMapping>
@@ -255,7 +255,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

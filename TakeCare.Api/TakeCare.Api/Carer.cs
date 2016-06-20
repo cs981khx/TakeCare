@@ -15,7 +15,6 @@ namespace TakeCare.Api
     public partial class Carer
     {
         public int Id { get; set; }
-        public int Id_Person { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
     

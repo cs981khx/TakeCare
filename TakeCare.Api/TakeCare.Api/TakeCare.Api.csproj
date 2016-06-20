@@ -134,7 +134,7 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities.cs">
+    <Compile Include="Activity.cs">
       <DependentUpon>TakeCare.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -169,19 +169,19 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Carers.cs">
+    <Compile Include="Carer.cs">
       <DependentUpon>TakeCare.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DAL\TakeCareContext.cs" />
-    <Compile Include="Devices.cs">
+    <Compile Include="Device.cs">
       <DependentUpon>TakeCare.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Person1.cs">
+    <Compile Include="Person.cs">
       <DependentUpon>TakeCare.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

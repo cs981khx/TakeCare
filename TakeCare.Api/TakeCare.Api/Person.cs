@@ -12,22 +12,20 @@ namespace TakeCare.Api
     using System;
     using System.Collections.Generic;
     
-    public partial class Devices
+    public partial class Person
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Devices()
+        public Person()
         {
-            this.Activities = new HashSet<Activities>();
-            this.Person = new HashSet<Person1>();
+            this.Carers = new HashSet<Carer>();
         }
     
         public int Id { get; set; }
-        public string MacAddress { get; set; }
-        public string Description { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Activities> Activities { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Person1> Person { get; set; }
+        public virtual ICollection<Carer> Carers { get; set; }
+        public virtual Device Device { get; set; }
     }
 }
