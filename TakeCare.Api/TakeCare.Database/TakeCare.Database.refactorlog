@@ -28,4 +28,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="MacAddress" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="82d3ca54-6986-4b45-b079-86d530438156" ChangeDateTime="06/18/2016 18:18:16">
+    <Property Name="ElementName" Value="[dbo].[Activities].[GettingDateFrom]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Activities]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TimeStamp" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c2fdbe74-9102-488d-b860-2518108164b9" ChangeDateTime="06/18/2016 18:28:57">
+    <Property Name="ElementName" Value="[dbo].[Activities].[IdMacAddress]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Activities]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id_Device" />
+  </Operation>
 </Operations>
