@@ -28,8 +28,15 @@
 
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:63982/api/values/post',
-            data: {jsonMacAddress: "", jsonDataFromDevice: ""},
+            url: 'http://localhost:60001/api/values/post',
+            data: {
+                "Id": 1,
+                "Steps": "10",
+                "TimeStamp": "2016-06-20 08:00:00",
+                "Intensity": 50,
+                "Category": 1,
+                "HeartRate": 0
+                },
             dataType: "json",
 
             crossDomain: true,

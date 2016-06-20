@@ -25,24 +25,24 @@ namespace TakeCare.Api.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string jsonMacAddress, [FromBody]string jsonDataFromDevice)
+        public void Post([FromBody]Activity deserializedActivity)
         {
             // deserialise the JSON  into object
             // insert them 
-            Device deserializedDevice = JsonConvert.DeserializeObject<Device>(jsonMacAddress);
-            List<Activity> deserializedActivity = JsonConvert.DeserializeObject<List<Activity>>(jsonDataFromDevice);
+            //Device deserializedDevice = JsonConvert.DeserializeObject<Device>(jsonMacAddress);
+            //Activity deserializedActivity = JsonConvert.DeserializeObject<Activity>(jsonDataFromDevice);
 
             using (var db = new TakeCareContext())
             {
-                var macadress = db.Devices
-                    .Where(d => d.MacAddress.ToLower() == deserializedDevice.MacAddress.ToLower())
-                    .FirstOrDefault();
+                //var macadress = db.Devices
+                //    .Where(d => d.MacAddress.ToLower() == deserializedDevice.MacAddress.ToLower())
+                //    .FirstOrDefault();
 
                 var activities = db.Set<Activity>();
-                foreach(Activity activity in deserializedActivity)
-                {
-                    activities.Add(activity);
-                }                
+                //foreach(Activity activity in deserializedActivity)
+                //{
+                    activities.Add(deserializedActivity);
+                //}                
 
                 db.SaveChanges();
             }
