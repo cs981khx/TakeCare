@@ -1,12 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Ajax.Utilities;
 using TakeCare.Api.DAL;
+using TakeCare.Api.Models;
 
 namespace TakeCare.Api.Controllers
 {
@@ -25,28 +27,50 @@ namespace TakeCare.Api.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]Activity deserializedActivity)
+        public void Post([FromBody]GBActivitySample[] activityFromBand)
         {
-            // deserialise the JSON  into object
-            // insert them 
-            //Device deserializedDevice = JsonConvert.DeserializeObject<Device>(jsonMacAddress);
-            //Activity deserializedActivity = JsonConvert.DeserializeObject<Activity>(jsonDataFromDevice);
+            List<Activity> activities = MapActivityFromBandToDbActivity(activityFromBand);
 
             using (var db = new TakeCareContext())
             {
-                //var macadress = db.Devices
-                //    .Where(d => d.MacAddress.ToLower() == deserializedDevice.MacAddress.ToLower())
-                //    .FirstOrDefault();
 
-                var activities = db.Set<Activity>();
-                //foreach(Activity activity in deserializedActivity)
-                //{
-                    activities.Add(deserializedActivity);
-                //}                
+                var dbActivities = db.Set<Activity>();
+                var dbDevices = db.Set<Device>();
+                
+                //find a matching device and link it to activities
+                var device =
+                    dbDevices.FirstOrDefault(
+                        d => d.MacAddress.ToLower() == activityFromBand.FirstOrDefault().MacAddress.ToLower());
+                if (device != null) device.Activities = activities;
+
+                dbActivities.AddRange(activities);
 
                 db.SaveChanges();
             }
 
+        }
+
+        private List<Activity> MapActivityFromBandToDbActivity(GBActivitySample[] activityFromBand)
+        {
+            List<Activity> activities = new List<Activity>();
+            foreach (GBActivitySample actBand in activityFromBand)
+            {
+                var act = new Activity()
+                {
+                    TimeStamp = ConvertMilliSecondToDateTime(actBand.Timestamp),
+                    Category = actBand.Type,
+                    HeartRate = actBand.CustomValue,
+                    Intensity = actBand.Intensity,
+                    Steps = actBand.Intensity
+                };
+            }
+            return activities;
+        }
+
+        private DateTime? ConvertMilliSecondToDateTime(int timestamp)
+        {
+            //TODO do a proper conversion later
+            return DateTime.Now;
         }
 
         // PUT api/values/5
