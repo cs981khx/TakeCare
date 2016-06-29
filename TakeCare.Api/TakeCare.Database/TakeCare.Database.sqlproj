@@ -71,4 +71,7 @@
     <Build Include="dbo\Tables\Persons.sql" />
     <Build Include="dbo\Tables\Device.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="dbo\Script.PostDeployment.StaticData.sql" />
+  </ItemGroup>
 </Project>

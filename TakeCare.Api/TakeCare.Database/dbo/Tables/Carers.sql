@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Carers]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
 	[Id_Person] INT NOT NULL, 
     [FirstName] NVARCHAR(50) NULL, 
     [LastName] NVARCHAR(50) NULL, 
