@@ -1,0 +1,29 @@
+﻿POST http://localhost:60001/api/values HTTP/1.1
+Host: localhost:60001
+Connection: keep-alive
+Content-Length: 70
+Content-Type: application/json
+Accept: */*
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en-GB,en;q=0.8,en-US;q=0.6,nb;q=0.4,de;q=0.2
+
+[
+{
+"Timestamp": "0",
+"Intensity": "0",
+"Steps": "0",
+"Type": "0",
+"CustomValue": "0",
+"Intensity": "0",
+"MacAddress": "00:00:01:02:03:05"
+},
+{
+"Timestamp": "0",
+"Intensity": "0",
+"Steps": "0",
+"Type": "0",
+"CustomValue": "0",
+"Intensity": "0",
+"MacAddress": "00:00:01:02:03:05"
+}
+]

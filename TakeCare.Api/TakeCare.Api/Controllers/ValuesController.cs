@@ -29,7 +29,7 @@ namespace TakeCare.Api.Controllers
         // POST api/values
         public void Post([FromBody]GBActivitySample[] activityFromBand)
         {
-            List<Activity> activities = MapActivityFromBandToDbActivity(activityFromBand);
+            //List<Activity> activities = MapActivityFromBandToDbActivity(activityFromBand);
 
             using (var db = new TakeCareContext())
             {
@@ -37,33 +37,33 @@ namespace TakeCare.Api.Controllers
                 var dbActivities = db.Set<Activity>();
                 var dbDevices = db.Set<Device>();
                 
-                //find a matching device and link it to activities
-                var device =
-                    dbDevices.FirstOrDefault(
-                        d => d.MacAddress.ToLower() == activityFromBand.FirstOrDefault().MacAddress.ToLower());
-                if (device != null) device.Activities = activities;
+                ////find a matching device and link it to activities
+                //var device =
+                //    dbDevices.FirstOrDefault(
+                //        d => d.MacAddress.ToLower() == activityFromBand.FirstOrDefault().MacAddress.ToLower());
+                //if (device != null) device.Activities = activities;
 
-                dbActivities.AddRange(activities);
+                //dbActivities.AddRange(activities);
 
                 db.SaveChanges();
             }
 
         }
 
-        private List<Activity> MapActivityFromBandToDbActivity(GBActivitySample[] activityFromBand)
+        private List<Activity> MapActivityFromBandToDbActivity(GBActivitySample activityFromBand)
         {
             List<Activity> activities = new List<Activity>();
-            foreach (GBActivitySample actBand in activityFromBand)
-            {
+            //foreach (GBActivitySample actBand in activityFromBand)
+            //{
                 var act = new Activity()
                 {
-                    TimeStamp = ConvertMilliSecondToDateTime(actBand.Timestamp),
-                    Category = actBand.Type,
-                    HeartRate = actBand.CustomValue,
-                    Intensity = actBand.Intensity,
-                    Steps = actBand.Intensity
+                    TimeStamp = ConvertMilliSecondToDateTime(activityFromBand.Timestamp),
+                    Category = activityFromBand.Type,
+                    HeartRate = activityFromBand.CustomValue,
+                    Intensity = activityFromBand.Intensity,
+                    Steps = activityFromBand.Intensity
                 };
-            }
+            //}
             return activities;
         }
 
