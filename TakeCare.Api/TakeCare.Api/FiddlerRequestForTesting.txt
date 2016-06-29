@@ -7,6 +7,8 @@ Accept: */*
 Accept-Encoding: gzip,deflate,sdch
 Accept-Language: en-GB,en;q=0.8,en-US;q=0.6,nb;q=0.4,de;q=0.2
 
+--------------------------------------------------------------------
+
 [
 {
 "Timestamp": "0",
