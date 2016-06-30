@@ -234,7 +234,7 @@
     <Content Include="Global.asax" />
     <Content Include="Gruntfile.js" />
     <Content Include="index.html" />
-    <Content Include="index2.aspx" />
+    <Content Include="index2.html" />
     <Content Include="pages\calendar.html" />
     <Content Include="pages\charts\chartjs.html" />
     <Content Include="pages\charts\flot.html" />
