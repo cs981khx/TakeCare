@@ -12,4 +12,4 @@ Post-Deployment Script Template
 TRUNCATE TABLE [Devices]
 
 INSERT INTO [Devices] (MacAddress,[Description]) VALUES ('C8:0F:10:38:E6:D5', 'Khizer')
-INSERT INTO [Devices] (MacAddress,[Description]) VALUES ('', 'Irina')
+INSERT INTO [Devices] (MacAddress,[Description]) VALUES ('C8:0F:10:5A:AC:88', 'Irina')

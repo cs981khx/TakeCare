@@ -28,8 +28,13 @@ namespace TakeCare.Api.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]GBActivitySample[] activityFromBand)
+        public HttpResponseMessage Post([FromBody]GBActivitySample[] activityFromBand)
         {
+            if (activityFromBand == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, "GBActivitySample[] array is null, please check the format of JSON being passed");
+            }
+
             using (var db = new TakeCareEntities())
             {
                 var dbActivities = db.Set<Activity>();
@@ -38,9 +43,9 @@ namespace TakeCare.Api.Controllers
 
                 db.Activities.AddRange(activities);
 
-                db.SaveChanges();
+                var recordsUpdated = db.SaveChanges();
+                return Request.CreateResponse(HttpStatusCode.OK, "Number of records updated: " + recordsUpdated);
             }
-
         }
 
         private List<Activity> MapActivityFromBandToDbActivity(GBActivitySample[] activityFromBand, TakeCareEntities dbContext)
@@ -51,11 +56,11 @@ namespace TakeCare.Api.Controllers
                 Device firstOrDefault = dbContext.Devices.FirstOrDefault(d => d.MacAddress.ToLower() == actBand.MacAddress.ToLower());
                 var act = new Activity()
                 {
-                    TimeStamp = ConvertMilliSecondToDateTime(actBand.Timestamp),
+                    TimeStamp = actBand.TimeStampDateTime,
                     Category = actBand.Type,
                     HeartRate = actBand.CustomValue,
                     Intensity = actBand.Intensity,
-                    Steps = actBand.Intensity,
+                    Steps = actBand.Steps,
                 };
                 activities.Add(act);
                 //find a matching device and link it to activities
@@ -63,12 +68,6 @@ namespace TakeCare.Api.Controllers
                 act.Id_Device = firstOrDefault?.Id ?? 0;
             }
             return activities;
-        }
-
-        private DateTime? ConvertMilliSecondToDateTime(int timestamp)
-        {
-            //TODO do a proper conversion later
-            return DateTime.Now;
         }
 
         // PUT api/values/5

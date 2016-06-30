@@ -7,67 +7,67 @@ namespace TakeCare.Api.Models
 {
     public class GBActivitySample
     {
-        private int timeStamp;
-        private int intensity;
-        private int steps;
-        private int type;
-        private int customValue;
-        private string macAddress;
+        private string _timeStampString;
+        private DateTime _timeStampDateTime;
+        private int _intensity;
+        private int _steps;
+        private int _type;
+        private int _customValue;
+        private string _macAddress;
 
-        public int Timestamp
+        public string Timestamp
         {
-            get { return timeStamp; }
-            set { timeStamp = value; }
+            get { return _timeStampString; }
+            set
+            {
+                _timeStampString = value;
+                DateTime.TryParse(_timeStampString, out _timeStampDateTime);
+            }
+        }
+
+        public DateTime TimeStampDateTime
+        {
+            get { return _timeStampDateTime; }
+            set { _timeStampDateTime = value; }
         }
 
         public int Intensity
         {
-            get { return intensity; }
-            set { intensity = value; }
+            get { return _intensity; }
+            set { _intensity = value; }
         }
         public int Steps
         {
-            get { return steps; }
-            set { steps = value; }
+            get { return _steps; }
+            set { _steps = value; }
         }
 
         public int Type
         {
-            get { return type; }
-            set { type = value; }
+            get { return _type; }
+            set { _type = value; }
         }
 
         public int CustomValue
         {
-            get { return customValue; }
-            set { customValue = value; }
+            get { return _customValue; }
+            set { _customValue = value; }
         }
 
         public string MacAddress
         {
-            get { return macAddress; }
-            set { macAddress = value; }
-        }
-
-        public GBActivitySample() { }
-
-        public GBActivitySample(int timestamp, int intensity, int steps, int type, int customValue)
-        {
-            this.timeStamp = timestamp;
-            this.intensity = intensity;
-            this.steps = steps;
-            this.customValue = customValue;
-            this.type = type;
+            get { return _macAddress; }
+            set { _macAddress = value; }
         }
 
         public string ToString()
         {
             return "GBActivitySample{" +
-                   "timestamp=" + timeStamp.ToString() +
-                   ", intensity=" + intensity +
-                   ", steps=" + steps +
-                   ", customValue=" + customValue +
-                   ", type=" + type +
+                   "timestamp=" + _timeStampString +
+                   ", intensity=" + _intensity +
+                   ", steps=" + _steps +
+                   ", customValue=" + _customValue +
+                   ", type=" + _type +
                    '}';
         }
     }
