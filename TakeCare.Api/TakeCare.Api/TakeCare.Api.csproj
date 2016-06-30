@@ -173,7 +173,6 @@
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="DAL\TakeCareContext.cs" />
     <Compile Include="Device.cs">
       <DependentUpon>TakeCare.tt</DependentUpon>
     </Compile>

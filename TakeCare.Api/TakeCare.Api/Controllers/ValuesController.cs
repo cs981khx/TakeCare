@@ -1,13 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Ajax.Utilities;
-using TakeCare.Api.DAL;
+using TakeCare.Api;
 using TakeCare.Api.Models;
 
 namespace TakeCare.Api.Controllers
@@ -29,41 +30,38 @@ namespace TakeCare.Api.Controllers
         // POST api/values
         public void Post([FromBody]GBActivitySample[] activityFromBand)
         {
-            //List<Activity> activities = MapActivityFromBandToDbActivity(activityFromBand);
-
-            using (var db = new TakeCareContext())
+            using (var db = new TakeCareEntities())
             {
-
                 var dbActivities = db.Set<Activity>();
-                var dbDevices = db.Set<Device>();
-                
-                ////find a matching device and link it to activities
-                //var device =
-                //    dbDevices.FirstOrDefault(
-                //        d => d.MacAddress.ToLower() == activityFromBand.FirstOrDefault().MacAddress.ToLower());
-                //if (device != null) device.Activities = activities;
 
-                //dbActivities.AddRange(activities);
+                List<Activity> activities = MapActivityFromBandToDbActivity(activityFromBand, db);
+
+                db.Activities.AddRange(activities);
 
                 db.SaveChanges();
             }
 
         }
 
-        private List<Activity> MapActivityFromBandToDbActivity(GBActivitySample activityFromBand)
+        private List<Activity> MapActivityFromBandToDbActivity(GBActivitySample[] activityFromBand, TakeCareEntities dbContext)
         {
             List<Activity> activities = new List<Activity>();
-            //foreach (GBActivitySample actBand in activityFromBand)
-            //{
+            foreach (GBActivitySample actBand in activityFromBand)
+            {
+                Device firstOrDefault = dbContext.Devices.FirstOrDefault(d => d.MacAddress.ToLower() == actBand.MacAddress.ToLower());
                 var act = new Activity()
                 {
-                    TimeStamp = ConvertMilliSecondToDateTime(activityFromBand.Timestamp),
-                    Category = activityFromBand.Type,
-                    HeartRate = activityFromBand.CustomValue,
-                    Intensity = activityFromBand.Intensity,
-                    Steps = activityFromBand.Intensity
+                    TimeStamp = ConvertMilliSecondToDateTime(actBand.Timestamp),
+                    Category = actBand.Type,
+                    HeartRate = actBand.CustomValue,
+                    Intensity = actBand.Intensity,
+                    Steps = actBand.Intensity,
                 };
-            //}
+                activities.Add(act);
+                //find a matching device and link it to activities
+                //TODO new device needs adding
+                act.Id_Device = firstOrDefault?.Id ?? 0;
+            }
             return activities;
         }
 

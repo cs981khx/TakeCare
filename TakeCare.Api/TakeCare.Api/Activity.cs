@@ -15,12 +15,11 @@ namespace TakeCare.Api
     public partial class Activity
     {
         public int Id { get; set; }
+        public Nullable<int> Id_Device { get; set; }
         public Nullable<int> Steps { get; set; }
         public Nullable<System.DateTime> TimeStamp { get; set; }
         public Nullable<int> Intensity { get; set; }
         public Nullable<int> Category { get; set; }
         public Nullable<int> HeartRate { get; set; }
-    
-        public virtual Device Device { get; set; }
     }
 }
