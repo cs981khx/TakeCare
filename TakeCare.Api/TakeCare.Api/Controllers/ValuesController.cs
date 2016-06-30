@@ -2,12 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics.Tracing;
 using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json.Linq;
 using TakeCare.Api;
 using TakeCare.Api.Models;
 
@@ -16,9 +19,58 @@ namespace TakeCare.Api.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public HttpResponseMessage Get()
         {
-            return new string[] { "value1", "value2" };
+            using (var db = new TakeCareEntities())
+            {
+                var data = (from act in db.Activities
+                    from dev in db.Devices
+                    where act.Id_Device == dev.Id
+                    select new
+                    {
+                        MacAddress = dev.MacAddress,
+                        Description = dev.Description,
+                        Intensity = act.Intensity.Value,
+                        Steps = act.Steps.Value,
+                        TimeStamp = act.TimeStamp.Value,
+                        Category = act.Category.Value
+                    }).ToList();
+
+                List<ActivityReturn> finalData = data.Select(x => new ActivityReturn()
+                {
+                    MacAddress = x.MacAddress,
+                    Description = x.Description,
+                    Intensity = x.Intensity,
+                    StepCount = x.Steps,
+                    DateTimeStamp = x.TimeStamp.ToString("dd/MM/yyyy HH:mm:ss"),
+                    ActivityType = CalculateActivityType(x.Category),
+                }).ToList();
+
+                return new HttpResponseMessage()
+                {
+                    Content = new StringContent(JArray.FromObject(finalData).ToString(), Encoding.UTF8, "application/json")
+                };
+            }
+        }
+
+        private static string CalculateActivityType(int category)
+        {
+            switch (category)
+            {
+                case 0:
+                    return "Not worn";
+                case 1:
+                    return "Walking";
+                case 2:
+                    return "Running";
+                case 3:
+                    return "Sleep walking";
+                case 5:
+                    return "Deep Sleeping";
+                case 4:
+                default:
+                    return "Walking";
+            }
         }
 
         // GET api/values/5

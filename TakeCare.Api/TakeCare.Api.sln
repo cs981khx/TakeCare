@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakeCare.Api", "TakeCare.Ap
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TakeCare.Database", "TakeCare.Database\TakeCare.Database.sqlproj", "{918397AC-164A-41FE-8534-3841720841D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakeCareWeb", "TakeCareWeb\TakeCareWeb.csproj", "{F46DB6F9-28E6-4812-B6DB-EBA50ED97A6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TakeCare.Web", "TakeCareWeb\TakeCare.Web.csproj", "{F46DB6F9-28E6-4812-B6DB-EBA50ED97A6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
