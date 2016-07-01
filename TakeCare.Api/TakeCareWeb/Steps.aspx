@@ -372,7 +372,6 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Mac Address</th>
                                             <th>Description</th>
                                             <th>Step Count</th>
                                             <th>DateTimeStamp</th>
@@ -432,140 +431,140 @@
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Firefox 1.0</td>
                                             <td>Win 98+ / OSX.2+</td>
                                             <td>1.7</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Firefox 1.5</td>
                                             <td>Win 98+ / OSX.2+</td>
                                             <td>1.8</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Firefox 2.0</td>
                                             <td>Win 98+ / OSX.2+</td>
                                             <td>1.8</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Firefox 3.0</td>
                                             <td>Win 2k+ / OSX.3+</td>
                                             <td>1.9</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Camino 1.0</td>
                                             <td>OSX.2+</td>
                                             <td>1.8</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Camino 1.5</td>
                                             <td>OSX.3+</td>
                                             <td>1.8</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Netscape 7.2</td>
                                             <td>Win 95+ / Mac OS 8.6-9.2</td>
                                             <td>1.7</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Netscape Browser 8</td>
                                             <td>Win 98SE+</td>
                                             <td>1.7</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Netscape Navigator 9</td>
                                             <td>Win 98+ / OSX.2+</td>
                                             <td>1.8</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Mozilla 1.0</td>
                                             <td>Win 95+ / OSX.1+</td>
                                             <td>1</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Mozilla 1.1</td>
                                             <td>Win 95+ / OSX.1+</td>
                                             <td>1.1</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Mozilla 1.2</td>
                                             <td>Win 95+ / OSX.1+</td>
                                             <td>1.2</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Mozilla 1.3</td>
                                             <td>Win 95+ / OSX.1+</td>
                                             <td>1.3</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Mozilla 1.4</td>
                                             <td>Win 95+ / OSX.1+</td>
                                             <td>1.4</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Mozilla 1.5</td>
                                             <td>Win 95+ / OSX.1+</td>
                                             <td>1.5</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Mozilla 1.6</td>
                                             <td>Win 95+ / OSX.1+</td>
                                             <td>1.6</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Mozilla 1.7</td>
                                             <td>Win 98+ / OSX.1+</td>
                                             <td>1.7</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Mozilla 1.8</td>
                                             <td>Win 98+ / OSX.1+</td>
                                             <td>1.8</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Seamonkey 1.1</td>
                                             <td>Win 98+ / OSX.2+</td>
                                             <td>1.8</td>
                                             <td>A</td>
                                         </tr>
                                         <tr>
-                                            <td>Gecko</td>
+                                            <td>Daytime</td>
                                             <td>Epiphany 2.20</td>
                                             <td>Gnome</td>
                                             <td>1.8</td>
@@ -791,7 +790,6 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Mac Address</th>
                                             <th>Description</th>
                                             <th>Step Count</th>
                                             <th>DateTimeStamp</th>
@@ -1039,9 +1037,7 @@
     <!-- page script -->
     <script>
         $(function () {
-            $("#example1").DataTable({
-                "ajax": 'http://localhost:60001/api/values'
-            });
+            $("#example1").DataTable();
         });
 </script>
 </body>

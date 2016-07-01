@@ -13,9 +13,11 @@ using Microsoft.Ajax.Utilities;
 using Newtonsoft.Json.Linq;
 using TakeCare.Api;
 using TakeCare.Api.Models;
+using System.Web.Http.Cors;
 
 namespace TakeCare.Api.Controllers
 {
+    [EnableCors(origins: "http://localhost:60000", headers: "*", methods: "*")]
     public class ValuesController : ApiController
     {
         // GET api/values
@@ -36,7 +38,7 @@ namespace TakeCare.Api.Controllers
                         Category = act.Category.Value
                     }).ToList();
 
-                List<ActivityReturn> finalData = data.Select(x => new ActivityReturn()
+                var finalData = data.Select(x => new ActivityReturn()
                 {
                     MacAddress = x.MacAddress,
                     Description = x.Description,
@@ -44,7 +46,7 @@ namespace TakeCare.Api.Controllers
                     StepCount = x.Steps,
                     DateTimeStamp = x.TimeStamp.ToString("dd/MM/yyyy HH:mm:ss"),
                     ActivityType = CalculateActivityType(x.Category),
-                }).ToList();
+                }).ToArray();
 
                 return new HttpResponseMessage()
                 {
