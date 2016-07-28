@@ -60,16 +60,20 @@ namespace TakeCare.Api.Controllers
             switch (category)
             {
                 case 0:
-                    return "Not worn";
+                    return "Active";
                 case 1:
                     return "Walking";
                 case 2:
                     return "Running";
                 case 3:
-                    return "Sleep walking";
+                    return "Not Wearing";
+                case 4:
+                    return "Sleep";
                 case 5:
                     return "Deep Sleeping";
-                case 4:
+                case 6:
+                    return "Charging";
+                
                 default:
                     return "Walking";
             }

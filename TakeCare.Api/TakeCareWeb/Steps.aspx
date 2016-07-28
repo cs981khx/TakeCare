@@ -373,7 +373,7 @@
                                     <thead>
                                         <tr>
                                            
-                                            <th>MacAddress</th>
+                                            <th>ActivityType</th>
                                             <th>Description</th>
                                             <th>Step Count</th>
                                             <th>DateTimeStamp</th>
@@ -387,7 +387,7 @@
                                     <tfoot>
                                         <tr>
                                             
-                                            <th>MacAddress</th>
+                                            <th>ActivityType</th>
                                             <th>Description</th>
                                             <th>Step Count</th>
                                             <th>DateTimeStamp</th>
@@ -663,7 +663,7 @@
                $('#example1').dataTable({
                    "aaData": msg,
                    "aoColumns": [{
-                       "mDataProp": "MacAddress"
+                       "mDataProp": "ActivityType"
                    }, {
                        "mDataProp": "Description"
                    }, {
