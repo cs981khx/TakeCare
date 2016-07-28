@@ -1200,6 +1200,8 @@
     <Content Include="bower.json" />
     <Content Include="composer.json" />
     <None Include="Properties\PublishProfiles\AWS.Web.pubxml" />
+    <Content Include="Scripts\datatable-editor.js" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
