@@ -640,7 +640,7 @@
             var result;
            $.ajax({
                 type: 'GET',
-                url: 'http://localhost:60001/api/values',
+                url: 'http://care.phildavies.com.au/TakeCare/api/values',
                 dataType: "json",
 
                 crossDomain: true,
